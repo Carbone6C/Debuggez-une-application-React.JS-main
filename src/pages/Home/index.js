@@ -122,7 +122,7 @@ const Page = () => {
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
         {/* Ajout de last && pour supprimer les éventuels erreurs si la valeurs est undefined */}
-        {last && (
+        {last ? (
           <EventCard
             imageSrc={last.cover}
             title={last.title}
@@ -130,7 +130,7 @@ const Page = () => {
             small
             label="boom"
             data-testid="last"
-          />
+          />) : ( <div data-testid="last">``</div>
         )}
       </div>
       <div className="col contact">

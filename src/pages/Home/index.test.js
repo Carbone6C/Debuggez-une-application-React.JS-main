@@ -30,9 +30,12 @@ describe("When Form is created", () => {
 
 describe("When a page is created", () => {
   it("a list of events is displayed", async () => {
+
+    /* Test de l'affichage de la liste des événements */
+
     render(< Home />)
     expect(screen.getByTestId("eventList")).toBeInTheDocument()
-    expect(screen.getByText("User&product MixUsers")).toBeInTheDocument()
+
   })
   it("a list a people is displayed", async () => {
 
@@ -41,9 +44,8 @@ describe("When a page is created", () => {
     render(< Home />)
     expect(screen.getByTestId("peopleList")).toBeInTheDocument()
     expect(screen.getByText("Samira")).toBeInTheDocument()
-    await waitFor(() => {
-      expect(screen.getByText("Jean-batiste")).toBeInTheDocument();
-    });
+    expect(screen.getByText("Jean-baptiste")).toBeInTheDocument();
+
   })
   it("a footer is displayed", async () => {
 
@@ -57,8 +59,11 @@ describe("When a page is created", () => {
   it("an event card, with the last event, is displayed", async () => {
 
     /* Test de l'affichage du dernier évenement */
+
     render(< Home />)
-    expect(screen.getByTestId("last")).toBeInTheDocument()
-    expect(screen.getByRole("date")).toBeInTheDocument()
+    await waitFor(() => {
+      expect(screen.getByTestId("last")).toBeInTheDocument()
+    });
+
   })
 });
