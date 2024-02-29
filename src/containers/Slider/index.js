@@ -12,13 +12,20 @@ const Slider = () => {
   );
   const nextCard = () => {
     setTimeout(
-      () => setIndex(index < byDateDesc.length ? index + 1 : 0),
+      /* Ajout du -1 */
+      () => setIndex(index < byDateDesc.length - 1 ? index + 1 : 0),
       5000
     );
   };
   useEffect(() => {
     nextCard();
   });
+
+  /* Ajout de la fonction pour update le state */
+  const handleRadioChange = (radioIdx) => {
+    setIndex(radioIdx);
+  };
+
   return (
     <div className="SlideCardList">
       {byDateDesc?.map((event, idx) => (
@@ -46,6 +53,8 @@ const Slider = () => {
                   type="radio"
                   name="radio-button"
                   checked={idx === radioIdx}
+                  /* Appel de la fonction au changement */
+                  onChange={() => handleRadioChange(radioIdx)}
                 />
               ))}
             </div>

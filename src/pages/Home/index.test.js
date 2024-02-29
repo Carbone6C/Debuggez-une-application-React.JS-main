@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import Home from "./index";
 
 describe("When Form is created", () => {
@@ -41,7 +41,9 @@ describe("When a page is created", () => {
     render(< Home />)
     expect(screen.getByTestId("peopleList")).toBeInTheDocument()
     expect(screen.getByText("Samira")).toBeInTheDocument()
-    expect(screen.getByText("Jean-Batiste")).toBeInTheDocument()
+    await waitFor(() => {
+      expect(screen.getByText("Jean-batiste")).toBeInTheDocument();
+    });
   })
   it("a footer is displayed", async () => {
 
